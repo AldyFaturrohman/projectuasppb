@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1034468441705",
+    "project_id": "project-uas-ppb-60a09",
+    "storage_bucket": "project-uas-ppb-60a09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034468441705:android:4bc84a0f23022383eeecf8",
+        "android_client_info": {
+          "package_name": "com.example.projectuasppb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFmdsaFT7dktWRVaJFdC2XodnmcgAVzbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
