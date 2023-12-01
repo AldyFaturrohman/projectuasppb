@@ -89,11 +89,12 @@ class _AddNoteState extends State<AddNote> {
                           decoration: InputDecoration.collapsed(
                             hintText: "Title",
                             hintStyle: TextStyle(
-                              color: Colors.black,
+                              color: const Color.fromARGB(100, 0, 0, 0),
                             ),
                           ),
                           style: GoogleFonts.poppins(
                             fontSize: 32.0,
+                            color: Colors.black,
                           ),
                           onChanged: (_val) {
                             title = _val;
@@ -107,11 +108,12 @@ class _AddNoteState extends State<AddNote> {
                             decoration: InputDecoration.collapsed(
                               hintText: "Note Description",
                               hintStyle: TextStyle(
-                                color: Colors.black,
+                                color: const Color.fromARGB(100, 0, 0, 0),
                               ),
                             ),
                             style: GoogleFonts.poppins(
                               fontSize: 20.0,
+                              color: Colors.black,
                             ),
                             onChanged: (_val) {
                               des = _val;
