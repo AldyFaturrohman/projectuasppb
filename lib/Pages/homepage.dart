@@ -57,23 +57,23 @@ class _HomePageState extends State<HomePage> {
         },
         child: Icon(
           Icons.add,
-          color: Colors.white70,
+          color: Colors.white,
         ),
-        backgroundColor: Colors.grey[700],
+        backgroundColor: Color.fromARGB(255, 190, 138, 98),
       ),
       appBar: AppBar(
         title: Text(
-          "Notes",
+          "MemoX",
           style: TextStyle(
             fontSize: 32.0,
             fontFamily: "lato",
             fontWeight: FontWeight.bold,
-            color: Colors.white70,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: Color(0xff070706),
+        backgroundColor: Color.fromARGB(255, 52, 51, 49),
       ),
       drawer: Drawer(
         child: SafeArea(
@@ -90,84 +90,87 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: FutureBuilder<QuerySnapshot>(
-        future: ref.get(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            if (snapshot.data?.docs.length == 0) {
-              return Center(
-                child: Text(
-                  "You have no saved Notes !",
-                  style: TextStyle(
-                    color: Colors.white70,
-                  ),
-                ),
-              );
-            }
-
-            return ListView.builder(
-              itemCount: snapshot.data?.docs.length,
-              itemBuilder: (context, index) {
-                Random random = new Random();
-                Color bg = myColors[random.nextInt(4)];
-                Map data = {};
-                data = snapshot.data!.docs[index].data() as Map;
-                DateTime mydateTime = data['created'].toDate();
-                String formattedTime =
-                    DateFormat.yMMMd().add_jm().format(mydateTime);
-
-                return InkWell(
-                  onTap: () {
-                    Navigator.of(context)
-                        .push(
-                      MaterialPageRoute(
-                        builder: (context) => ViewNote(data, formattedTime, snapshot.data!.docs[index].reference,),
-                      ),
-                    )
-                        .then((value) {
-                      setState(() {});
-                    });
-                  },
-                  child: Card(
-                    color: bg,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "${data['title']}",
-                            style: TextStyle(
-                              fontSize: 24.0,
-                              fontFamily: "lato",
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              formattedTime,
-                              style: TextStyle(
-                                fontSize: 20.0,
-                                fontFamily: "lato",
-                                color: Colors.black87,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+      body: Container(
+        color: Color.fromARGB(255, 255, 223, 186),
+        child: FutureBuilder<QuerySnapshot>(
+          future: ref.get(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              if (snapshot.data?.docs.length == 0) {
+                return Center(
+                  child: Text(
+                    "You have no saved Notes !",
+                    style: TextStyle(
+                      color: Colors.black12,
                     ),
                   ),
                 );
-              },
-            );
-          } else {
-            return Center(
-              child: Text("Loading..."),
-            );
-          }
-        },
+              }
+      
+              return ListView.builder(
+                itemCount: snapshot.data?.docs.length,
+                itemBuilder: (context, index) {
+                  Random random = new Random();
+                  Color bg = myColors[random.nextInt(4)];
+                  Map data = {};
+                  data = snapshot.data!.docs[index].data() as Map;
+                  DateTime mydateTime = data['created'].toDate();
+                  String formattedTime =
+                      DateFormat.yMMMd().add_jm().format(mydateTime);
+      
+                  return InkWell(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(
+                        MaterialPageRoute(
+                          builder: (context) => ViewNote(data, formattedTime, snapshot.data!.docs[index].reference,),
+                        ),
+                      )
+                          .then((value) {
+                        setState(() {});
+                      });
+                    },
+                    child: Card(
+                      color: bg,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${data['title']}",
+                              style: TextStyle(
+                                fontSize: 24.0,
+                                fontFamily: "lato",
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                formattedTime,
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontFamily: "lato",
+                                  color: Colors.black87,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              );
+            } else {
+              return Center(
+                child: Text("Loading..."),
+              );
+            }
+          },
+        ),
       ),
     );
   }
