@@ -52,7 +52,8 @@ void signInWithGoogle(BuildContext context) async {
             ),
           );
         }
-      });
+      }
+      );
     }
   } catch (PlatformException) {
     print(PlatformException);

@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:projectuasppb/Pages/addnote.dart';
 import 'package:projectuasppb/Pages/login.dart';
 import 'package:projectuasppb/Pages/viewnote.dart';
+import 'package:projectuasppb/controller/google_auth.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -31,8 +32,8 @@ class _HomePageState extends State<HomePage> {
     Colors.pink[200]!,
   ];
 
-  Future signOut() async {
-    await FirebaseAuth.instance.signOut();
+  Future<void> signOut() async {
+    googleSignIn.disconnect();
     Navigator.pushReplacement(
       context, MaterialPageRoute(builder: (context) => LoginPage())
     );
