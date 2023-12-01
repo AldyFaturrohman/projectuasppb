@@ -62,12 +62,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.grey[700],
       ),
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            signOut();
-          },
-        ), 
         title: Text(
           "Notes",
           style: TextStyle(
@@ -80,6 +74,21 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Color(0xff070706),
+      ),
+      drawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            children: [
+              ListTile(
+                leading: Icon(Icons.logout),
+                title: Text("Logout"),
+                onTap: () {
+                  signOut();
+                },
+              )
+            ],
+          ),
+        ),
       ),
       body: FutureBuilder<QuerySnapshot>(
         future: ref.get(),
