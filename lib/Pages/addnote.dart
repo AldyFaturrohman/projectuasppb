@@ -16,98 +16,114 @@ class _AddNoteState extends State<AddNote> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(
-              12.0,
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Icon(
-                        Icons.arrow_back_ios_outlined,
-                        size: 24.0,
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          Colors.grey[700],
-                        ),
-                        padding: MaterialStateProperty.all(
-                          EdgeInsets.symmetric(
-                            horizontal: 25.0,
-                            vertical: 8.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: add,
-                      child: Text(
-                        "Save",
-                        style: GoogleFonts.poppins(
-                          fontSize: 18.0,
-                        ),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          Colors.grey[700],
-                        ),
-                        padding: MaterialStateProperty.all(
-                          EdgeInsets.symmetric(
-                            horizontal: 25.0,
-                            vertical: 8.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                //
-                SizedBox(
-                  height: 12.0,
-                ),
-                //
-                Form(
-                  child: Column(
+        body: Container(
+          color: Color.fromARGB(255, 255, 223, 186),
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.all(
+                12.0,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextFormField(
-                        decoration: InputDecoration.collapsed(
-                          hintText: "Title",
-                        ),
-                        style: GoogleFonts.poppins(
-                          fontSize: 32.0
-                        ),
-                        onChanged: (_val) {
-                          title = _val;
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
                         },
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.arrow_back_ios_outlined,
+                              size: 24.0,
+                            ),
+                            Text(
+                              "  Notes  "
+                            ),
+                          ],
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            Color.fromARGB(255, 190, 138, 98),
+                          ),
+                          padding: MaterialStateProperty.all(
+                            EdgeInsets.symmetric(
+                              horizontal: 10.0,
+                              vertical: 8.0,
+                            ),
+                          ),
+                        ),
                       ),
-                      //
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.75,
-                        padding: const EdgeInsets.only(top: 12.0),
-                        child: TextFormField(
-                          decoration: InputDecoration.collapsed(
-                            hintText: "Note Description",
-                          ),
+                      ElevatedButton(
+                        onPressed: add,
+                        child: Text(
+                          "Save",
                           style: GoogleFonts.poppins(
-                            fontSize: 20.0,
+                            fontSize: 18.0,
                           ),
-                          onChanged: (_val) {
-                            des = _val;
-                          },
-                          maxLines: 20,
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            Color.fromARGB(255, 190, 138, 98),
+                          ),
+                          padding: MaterialStateProperty.all(
+                            EdgeInsets.symmetric(
+                              horizontal: 25.0,
+                              vertical: 8.0,
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
-                ),
-              ],
+                  //
+                  SizedBox(
+                    height: 12.0,
+                  ),
+                  //
+                  Form(
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          decoration: InputDecoration.collapsed(
+                            hintText: "Title",
+                            hintStyle: TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                          style: GoogleFonts.poppins(
+                            fontSize: 32.0,
+                          ),
+                          onChanged: (_val) {
+                            title = _val;
+                          },
+                        ),
+                        //
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.75,
+                          padding: const EdgeInsets.only(top: 12.0),
+                          child: TextFormField(
+                            decoration: InputDecoration.collapsed(
+                              hintText: "Note Description",
+                              hintStyle: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                            style: GoogleFonts.poppins(
+                              fontSize: 20.0,
+                            ),
+                            onChanged: (_val) {
+                              des = _val;
+                            },
+                            maxLines: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
