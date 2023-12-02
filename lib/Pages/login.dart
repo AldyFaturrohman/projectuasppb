@@ -56,9 +56,13 @@ class _LoginPageState extends State<LoginPage> {
                         'images/google.png',
                         height: 36.0,
                       ),
+
+                      SizedBox(
+                        width: 20.0,
+                      ),
                       //
                       Text(
-                        "Sing in with Google",
+                        "Sign in with Google",
                         style: GoogleFonts.poppins(
                           color: Colors.black,
                           fontSize: 15.0,
@@ -72,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
-                        const Color.fromARGB(255, 255, 255, 255),
+                        const Color.fromARGB(255, 255, 223, 186),
                       ),
                       padding: MaterialStateProperty.all(
                         EdgeInsets.symmetric(

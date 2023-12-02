@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,18 +17,6 @@ class _HomePageState extends State<HomePage> {
       .collection('users')
       .doc(FirebaseAuth.instance.currentUser?.uid)
       .collection('notes');
-
-  List<Color> myColors = [
-    Colors.yellow[200]!,
-    Colors.red[200]!,
-    Colors.green[200]!,
-    Colors.deepPurple[200]!,
-    Colors.purple[200]!,
-    Colors.cyan[200]!,
-    Colors.teal[200]!,
-    Colors.tealAccent[200]!,
-    Colors.pink[200]!,
-  ];
 
   Future<void> signOut() async {
     googleSignIn.disconnect();
@@ -110,8 +96,7 @@ class _HomePageState extends State<HomePage> {
               return ListView.builder(
                 itemCount: snapshot.data?.docs.length,
                 itemBuilder: (context, index) {
-                  Random random = new Random();
-                  Color bg = myColors[random.nextInt(4)];
+                  Color bg = Color.fromARGB(255, 190, 138, 98);
                   Map data = {};
                   data = snapshot.data!.docs[index].data() as Map;
                   DateTime mydateTime = data['created'].toDate();
@@ -143,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 24.0,
                                 fontFamily: "lato",
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                             ),
                             Container(
@@ -153,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontFamily: "lato",
-                                  color: Colors.black87,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
